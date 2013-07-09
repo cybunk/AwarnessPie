@@ -5,8 +5,8 @@
 	"color":"#00346B",
 	"fadingTime":"10",
 	"message":{
-			"text":"Please:<br>'Be quiet  !'",
-			"color":"#fff",
+			"text":"Hello World <br>'Be quiet  !'",
+			"color":"#000",
 			"font":""
 			}
 }

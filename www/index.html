@@ -10,7 +10,7 @@
     
     <style>
       #text{
-        font: normal 15em georgia, sans-serif;
+        font: normal 15em Helvetica, sans-serif;
       }
     </style>
     
@@ -29,6 +29,7 @@
           $.getJSON('format.json', function(data) {
 
            if(data.id!=lastJson.id){
+               lastJson.id =data.id
                console.log(data)
 
                if(typeof(data.sound)!="undefined"){
