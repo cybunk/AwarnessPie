@@ -1,0 +1,81 @@
+<!doctype html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Awarenes screen </title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="lib/jquery.animate-colors/jquery.animate-colors-min.js"></script> 
+    
+    <style>
+      #text{
+        font: normal 15em georgia, sans-serif;
+      }
+    </style>
+    
+    <script>
+
+     var items = [];
+     var audio = "<audio autoplay>"
+                 +"  <source src='{source}' type='audio/ogg'>"
+                 +" </audio>"
+
+    var lastJson = {id:null}
+
+
+      // LOAD JSON TO MODIFY THE PAGE 
+      function loadMessage(){
+          $.getJSON('format.json', function(data) {
+
+           if(data.id!=lastJson.id){
+               console.log(data)
+
+               if(typeof(data.sound)!="undefined"){
+                  var myAudio = audio.replace("{source}",data.sound)
+                  $(myAudio).appendTo('body');  
+               }
+
+               if(typeof(data.color)!="undefined"){
+                  $("body").animate({'backgroundColor':data.color});  
+               }
+
+               if(typeof(data.message)!="undefined"){
+                  
+                  $("#text").html(data.message.text);  
+
+                  if(typeof(data.message.font)!="undefined"){
+                    $("#text").css('font',data.message.font);  
+                  }
+
+                  if(typeof(data.message.color)!="undefined"){
+                    $("#text").animate({'color':data.message.color});  
+                  }
+               }
+
+            }
+        	});
+      }
+      
+      loadMessage()
+
+      function checkStates(){
+        loadMessage()
+      }
+
+
+      // CHECK EVERY SECOND IF SOMETHING HAPPEND
+      var Loader = window.setInterval(
+            function(){
+              checkStates()
+             },1000);
+
+    </script>
+
+   </head>
+   <body>
+   		<div id="text">
+   			ici
+   		</div>
+   </body>
+</html>

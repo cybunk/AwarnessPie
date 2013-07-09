@@ -1,0 +1,12 @@
+{
+	"id":"3",
+	"sound":"sound/Heal8-Bit.ogg",
+	"image":"http://phrasesfb.com/files/2011/03/chuttt.jpg",
+	"color":"#00346B",
+	"fadingTime":"10",
+	"message":{
+			"text":"Please:<br>'Be quiet  !'",
+			"color":"#fff",
+			"font":""
+			}
+}
